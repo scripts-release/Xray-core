@@ -56,9 +56,9 @@ func New() UUID {
 // ParseBytes converts a UUID in byte form to object.
 func ParseBytes(b []byte) (UUID, error) {
 	var uuid UUID
-	if len(b) != 16 {
-		return uuid, errors.New("invalid UUID: ", b)
-	}
+	// if len(b) != 16 {
+	// 	return uuid, errors.New("invalid UUID: ", b)
+	// }
 	copy(uuid[:], b)
 	return uuid, nil
 }
@@ -69,9 +69,9 @@ func ParseString(str string) (UUID, error) {
 
 	text := []byte(str)
 	if l := len(text); l < 32 || l > 36 {
-		if l == 0 || l > 30 {
-			return uuid, errors.New("invalid UUID: ", str)
-		}
+		// if l == 0 || l > 30 {
+		// 	return uuid, errors.New("invalid UUID: ", str)
+		// }
 		h := sha1.New()
 		h.Write(uuid[:])
 		h.Write(text)
